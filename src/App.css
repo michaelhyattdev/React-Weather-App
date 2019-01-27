@@ -1,32 +1,234 @@
-.App {
-  text-align: center;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    background: linear-gradient(45deg, rgb(59, 0, 107), navy);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#search {
+    width: 330px;
+    background: rgba(37, 37, 37, 0.8);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 20px;
+    border-radius: 5px;
+}
+#search input {
+    height: 30px;
+    border: none;
+    padding: 0 0 0 5px;
+    margin: 0;
+    border-radius: 5px;
+    width: 200px;
+}
+#search button {
+    height: 30px;
+    font-size: 14px;
+    border: none;
+    background-color: rgb(0, 95, 204);
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+}
+#search button:hover {
+    background-color: rgb(0, 69, 173);
+    color: #fff;
+    font-weight: bold;
+}
+#searchStatus {
+    margin-bottom: 5px;
+    padding-left: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+#innerSearch {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#container {
+    width: 350px;
+    height: 80vh;
+    background: rgba(000, 000, 000, 0.7);
+    display: none;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+#weatherInfo {
+    height: 100%;
+    width: 100%;
+    display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#cityInfo {
+    width: 100%;
+    height: 150px;
+    background-color: rgba(0, 95, 204, 0.692);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 5px 5px;
+}
+#timeDate {
+    height: 100%;
+    width: auto;
+    display: flex;
+}
+
+h1 {
+    filter: drop-shadow(8px 8px 8px black);
+}
+h2 {
+    font-size: 36px;
+    margin: 0px;
+    filter: drop-shadow(8px 8px 8px black);
+}
+h3 {
+    filter: drop-shadow(8px 8px 8px black);
+    margin: 5px 0;
+}
+h4 {
+    margin: 0 0 10px 0;
+
+    padding: 0;
+    font-size: 32px;
+    color: white;
+}
+h5 {
+    font-size: 32px;
+    margin: 5px 0 0 0;
+}
+h6 {
+    margin: 0;
+}
+
+#info {
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(180deg, rgb(0, 95, 204), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.day {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgb(37, 37, 37), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+}
+.day img {
+    height: 150px;
+    width: auto;
+}
+
+.inactive {
+    opacity: 0.5;
+}
+
+#info h4 {
+    font-size: 24px;
+}
+
+.label {
+    margin: 10px 0 5px 0;
+    color: rgb(226, 226, 226);
+    text-transform: capitalize;
+}
+.smallContainer {
+    width: 50%;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.largeContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+.smallerContainer {
+    width: 200px;
+    display: flex;
+    align-items: center;
+}
+.smallerContainer .subText {
+    font-size: 24px;
+}
+.smallerContainer img {
+    margin: 0 5px;
+}
+.subText {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@media only screen and (max-height: 900px) {
+    #search {
+        margin: 10px;
+        width: 280px;
+    }
+    #searchStatus {
+        padding-left: 5px;
+    }
+    #search input {
+        width: 160px;
+    }
+    #innerSearch button {
+        width: 100px;
+        font-size: 13px;
+    }
+    #container {
+        width: 300px;
+        max-height: 90vh;
+    }
+    #timeDate {
+        margin-bottom: 20px;
+    }
+    #cityInfo {
+        padding: 0.4em 0;
+        height: auto;
+    }
+    #icon {
+        height: 7em;
+    }
+
+    .subText {
+        font-size: 14px;
+    }
+    .label {
+        font-size: 15px;
+        margin: 5px 0;
+    }
+
+    h5 {
+        font-size: 28px;
+        margin: 2px 0 0 0;
+    }
+    h4 {
+        font-size: 28px;
+    }
 }
