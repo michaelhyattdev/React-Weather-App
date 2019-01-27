@@ -24,9 +24,7 @@ class App extends Component {
         };
         this.handleClick = this.handleClick.bind(this);
     }
-    handleClick() {
-        let zipCode = document.getElementById("zip").value;
-
+    handleClick(zipCode) {
         fetch("https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + ",us&appid=" + APPID)
             .then(function(response) {
                 return response.json();
