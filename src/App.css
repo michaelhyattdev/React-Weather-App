@@ -63,7 +63,7 @@ main {
     width: 350px;
     height: 80vh;
     background: rgba(000, 000, 000, 0.7);
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: flex-end;
     border-radius: 5px;

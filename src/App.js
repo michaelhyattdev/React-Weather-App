@@ -44,23 +44,37 @@ class App extends Component {
                     currentTemp: Math.floor(data.main.temp * (9 / 5) - 459.67) + "°F",
                     highTemp: Math.floor(data.main.temp_max * (9 / 5) - 459.67) + "°F",
                     lowTemp: Math.floor(data.main.temp_min * (9 / 5) - 459.67) + "°F",
-                    sunrise: sunrise.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true }),
-                    sunset: sunset.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true }),
+                    sunrise: sunrise.toLocaleString("en-US", {
+                        hour: "numeric",
+                        minute: "numeric",
+                        hour12: true
+                    }),
+                    sunset: sunset.toLocaleString("en-noneUS", {
+                        hour: "numeric",
+                        minute: "numeric",
+                        hour12: true
+                    }),
                     windSpeed: data.wind.speed + " MPH",
                     humidity: data.main.humidity + "%",
                     cityName: data.name
                 });
             });
-
-        document.querySelector("#container").style.display = "flex";
     }
     render() {
-        return (
-            <main>
-                <Search onClick={this.handleClick} />
-                <Card info={this.state} />
-            </main>
-        );
+        if (this.state.cityName == "") {
+            return (
+                <main>
+                    <Search onClick={this.handleClick} />
+                </main>
+            );
+        } else {
+            return (
+                <main>
+                    <Search onClick={this.handleClick} />
+                    <Card info={this.state} />
+                </main>
+            );
+        }
     }
 }
 
