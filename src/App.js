@@ -59,20 +59,12 @@ class App extends Component {
             });
     }
     render() {
-        if (this.state.cityName == "") {
-            return (
-                <main>
-                    <Search onClick={this.handleClick} />
-                </main>
-            );
-        } else {
-            return (
-                <main>
-                    <Search onClick={this.handleClick} />
-                    <Card info={this.state} />
-                </main>
-            );
-        }
+        return (
+            <main>
+                <Search onClick={this.handleClick} />
+                {this.state.cityName && <Card info={this.state} />}
+            </main>
+        );
     }
 }
 

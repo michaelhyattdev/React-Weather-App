@@ -16,17 +16,15 @@ export class Search extends Component {
             status: "Enter Zipcode:",
             statusStyle: normalStyle
         };
-        this.handleClick = this.handleClick.bind(this);
-        this.handleChange = this.handleChange.bind(this);
     }
-    handleChange(e) {
+    handleChange = e => {
         this.setState({
             input: e.target.value,
             status: "Enter Zipcode:",
             statusStyle: normalStyle
         });
-    }
-    handleClick() {
+    };
+    handleClick = () => {
         var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.state.input);
 
         if (isValidZip) {
@@ -37,7 +35,7 @@ export class Search extends Component {
                 statusStyle: errorStyle
             });
         }
-    }
+    };
     render() {
         return (
             <div id="search">
