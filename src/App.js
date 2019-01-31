@@ -22,9 +22,8 @@ class App extends Component {
             humidity: "",
             cityName: ""
         };
-        this.handleClick = this.handleClick.bind(this);
     }
-    handleClick(zipCode) {
+    handleClick = zipCode => {
         fetch("https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + ",us&appid=" + APPID)
             .then(function(response) {
                 return response.json();
@@ -57,7 +56,7 @@ class App extends Component {
                     cityName: data.name
                 });
             });
-    }
+    };
     render() {
         return (
             <main>
