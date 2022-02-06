@@ -6,7 +6,7 @@ import "./App.css";
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const dtime = new Date();
 const day = days[dtime.getDay()];
-const APPID = "f2b53e7ee56cee418dca0659c75a0fb8";
+const APPID = process.env.REACT_APP_OWP_KEY;
 
 class App extends Component {
     constructor(props) {
