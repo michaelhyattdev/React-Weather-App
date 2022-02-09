@@ -24,7 +24,7 @@ class App extends Component {
         };
     }
     handleClick = zipCode => {
-        fetch("https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + ",us&appid=" + APPID)
+        fetch("https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + ",us&appid=" + APPID + "&units=imperial")
             .then(function(response) {
                 return response.json();
             })
@@ -38,9 +38,9 @@ class App extends Component {
                     icon: data.weather[0].icon,
                     day: day,
                     description: data.weather[0].description,
-                    currentTemp: Math.floor(data.main.temp * (9 / 5) - 459.67) + "°F",
-                    highTemp: Math.floor(data.main.temp_max * (9 / 5) - 459.67) + "°F",
-                    lowTemp: Math.floor(data.main.temp_min * (9 / 5) - 459.67) + "°F",
+                    currentTemp: Math.floor(data.main.temp) + "°F",
+                    highTemp: Math.floor(data.main.temp_max) + "°F",
+                    lowTemp: Math.floor(data.main.temp_min) + "°F",
                     sunrise: sunrise.toLocaleString("en-US", {
                         hour: "numeric",
                         minute: "numeric",
