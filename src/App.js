@@ -1,67 +1,24 @@
 import React, { Component } from "react";
 import { Card } from "./Card";
-import { Search } from "./Search";
 import "./App.css";
 
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const dtime = new Date();
-const day = days[dtime.getDay()];
-const APPID = process.env.REACT_APP_OWP_KEY;
+const KEY = process.env.REACT_APP_OWM_KEY;
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            icon: "",
-            currentTemp: "",
-            highTemp: "",
-            lowTemp: "",
-            sunrise: "",
-            sunset: "",
-            windSpeed: "",
-            humidity: "",
-            cityName: ""
+            data: {}
         };
     }
-    handleClick = zipCode => {
-        fetch("https://api.openweathermap.org/data/2.5/weather?zip=" + zipCode + ",us&appid=" + APPID + "&units=imperial")
-            .then(function(response) {
-                return response.json();
-            })
-            .then(data => {
-                let sunrise = new Date(0);
-                let sunset = new Date(0);
-                sunrise.setUTCSeconds(data.sys.sunrise);
-                sunset.setUTCSeconds(data.sys.sunset);
-
-                this.setState({
-                    icon: data.weather[0].icon,
-                    day: day,
-                    description: data.weather[0].description,
-                    currentTemp: Math.floor(data.main.temp) + "°F",
-                    highTemp: Math.floor(data.main.temp_max) + "°F",
-                    lowTemp: Math.floor(data.main.temp_min) + "°F",
-                    sunrise: sunrise.toLocaleString("en-US", {
-                        hour: "numeric",
-                        minute: "numeric",
-                        hour12: true
-                    }),
-                    sunset: sunset.toLocaleString("en-noneUS", {
-                        hour: "numeric",
-                        minute: "numeric",
-                        hour12: true
-                    }),
-                    windSpeed: data.wind.speed + " MPH",
-                    humidity: data.main.humidity + "%",
-                    cityName: data.name
-                });
-            });
-    };
+    componentDidMount() {
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=29.503421&lon=-98.66791&exclude=minutely,hourly&appid=${KEY}&units=imperial`)
+        .then(data => console.log(data));
+    }
     render() {
         return (
             <main>
-                <Search onClick={this.handleClick} />
-                {this.state.cityName && <Card info={this.state} />}
+                <Card info={this.state} />
             </main>
         );
     }
